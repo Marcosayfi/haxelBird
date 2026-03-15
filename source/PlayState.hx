@@ -19,17 +19,17 @@ class PlayState extends FlxState
 
         bg = new FlxSprite(0, 0);
         bg.loadGraphic("assets/images/menu/menuBG.png");
+        bg.updateHitbox();
         add(bg);
 
         playButton = new FlxButton(0, 0, "", clickPlay);
         playButton.loadGraphic("assets/images/menu/playButton.png"); // guessing game
-        playButton.label.setFormat(null, 25, 0xffff4800, "center");
         playButton.scale.set(7, 10);
         playButton.updateHitbox();
         add(playButton);
 
-        closeButton = new FlxButton(0, 0, "", closeGame);
-        closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttpns
+        closeButton = new FlxButton(1160, 0, "", closeGame);
+        closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
         add(closeButton);
     }
 
@@ -41,6 +41,7 @@ class PlayState extends FlxState
     function closeGame():Void
     {
         trace('bai bai');
+        Sys.exit(0);
     }
 
     override public function update(elapsed:Float):Void

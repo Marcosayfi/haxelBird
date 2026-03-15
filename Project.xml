@@ -88,6 +88,6 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here-->
-	<icon path="assets/images/duckieOG.png" />
+	<icon path="assets/images/gameplay/duckie.png" />
 
 </project>
