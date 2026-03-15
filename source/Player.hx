@@ -13,7 +13,7 @@ class Player extends FlxSprite
     {
         super(x, y);
 
-	    loadGraphic("assets/images/duckie.png"); // bird
+	    loadGraphic("assets/images/gameplay/duckie.png"); // bird
 
         acceleration.y = GRAVITY; // gravity
         maxVelocity.y = 300;

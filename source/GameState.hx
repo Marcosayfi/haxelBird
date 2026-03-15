@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxState;
 import flixel.FlxSprite;
+import flixel.FlxG;
 
 class GameState extends FlxState
 {
@@ -21,5 +22,9 @@ class GameState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (FlxG.keys.justPressed.ESCAPE)
+		{
+			FlxG.switchState(PlayState.new);
+		}
 	}
 }

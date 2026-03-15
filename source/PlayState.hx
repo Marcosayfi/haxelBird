@@ -19,13 +19,14 @@ class PlayState extends FlxState
 
         bg = new FlxSprite(0, 0);
         bg.loadGraphic("assets/images/menu/menuBG.png");
-        bg.updateHitbox();
         add(bg);
 
-        playButton = new FlxButton(0, 0, "", clickPlay);
-        playButton.loadGraphic("assets/images/menu/playButton.png"); // guessing game
-        playButton.scale.set(7, 10);
-        playButton.updateHitbox();
+        logo = new FlxSprite(200, 200);
+        logo.loadGraphic("assets/images/menu/logo.png");
+        add(logo);
+
+        playButton = new FlxButton(750, 500, "", clickPlay);
+        playButton.loadGraphic("assets/images/menu/playButton.png"); // add buttons
         add(playButton);
 
         closeButton = new FlxButton(1160, 0, "", closeGame);
