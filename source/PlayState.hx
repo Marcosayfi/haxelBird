@@ -11,6 +11,7 @@ class PlayState extends FlxState
     var logo:FlxSprite;
     var playButton:FlxButton;
     var closeButton:FlxButton;
+    var settingsButton:FlxButton;
 
     override public function create():Void
     {
@@ -29,8 +30,11 @@ class PlayState extends FlxState
         playButton.loadGraphic("assets/images/menu/playButton.png"); // add buttons
         add(playButton);
 
+        settingsButton = new FlxButton(500, 500, "Settings", openSettings);
+        add(settingsButton);
+
         closeButton = new FlxButton(1160, 0, "", closeGame);
-        closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
+        closeButton.loadGraphic("assets/images/menu/closeButton.png");
         add(closeButton);
     }
 
@@ -42,7 +46,12 @@ class PlayState extends FlxState
     function closeGame():Void
     {
         trace('bai bai');
-        Sys.exit(0);
+        Sys.exit(0); // remove this line when compiling to https or similar
+    }
+
+    function openSettings():Void
+    {
+        FlxG.switchState(SettingsState.new);
     }
 
     override public function update(elapsed:Float):Void
