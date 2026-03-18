@@ -24,11 +24,6 @@ class SettingsState extends FlxState
         add(wip);
     }
 
-    function clickPlay():Void
-    {
-        FlxG.switchState(PlayState.new);
-    }
-
     function closeSettings():Void
     {
         FlxG.switchState(PlayState.new);
