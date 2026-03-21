@@ -15,10 +15,6 @@ class GameState extends FlxState
         add(bg);
 		player = new Player(20, 20);
         add(player);
-		if (FlxG.keys.justPressed.ESCAPE)
-		{
-			FlxG.switchState(PlayState.new);
-		}
 		super.create();
 		trace ('pressed play button'); // traces that you pressed play button
 	}
@@ -26,5 +22,9 @@ class GameState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (FlxG.keys.justPressed.ESCAPE)
+		{
+			FlxG.switchState(PlayState.new);
+		}
 	}
 }

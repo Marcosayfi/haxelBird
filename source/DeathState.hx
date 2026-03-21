@@ -5,7 +5,7 @@ import flixel.ui.FlxButton;
 import flixel.FlxState;
 import flixel.text.FlxText;
 
-class SettingsState extends FlxState
+class DeathState extends FlxState
 {
     // variables
     var closeButton:FlxButton;
@@ -13,9 +13,9 @@ class SettingsState extends FlxState
     override public function create():Void
     {
         super.create();
-        trace('opened settings'); // traces that you opened the settings
+        trace('died'); // self explanitory unless you don't understand english
 
-        closeButton = new FlxButton(1160, 0, "", closeSettings);
+        closeButton = new FlxButton(1160, 0, "", closeDeathScreen);
         closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
         add(closeButton);
 
@@ -24,7 +24,7 @@ class SettingsState extends FlxState
         add(wip);
     }
 
-    function closeSettings():Void
+    function closeDeathScreen():Void
     {
         FlxG.switchState(PlayState.new);
     }
