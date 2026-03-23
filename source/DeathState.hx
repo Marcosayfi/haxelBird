@@ -1,14 +1,16 @@
 package;
 
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
 import flixel.FlxState;
-import flixel.text.FlxText;
+import flixel.FlxSprite;
 
 class DeathState extends FlxState
 {
     // variables
     var closeButton:FlxButton;
+    var bg:FlxSprite;
 
     override public function create():Void
     {
@@ -19,7 +21,11 @@ class DeathState extends FlxState
         closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
         add(closeButton);
 
-        var wip = new flixel.text.FlxText(0, 0, 0, "WIP", 64);
+        bg = new FlxSprite(0, 0);
+        bg.makeGraphic(1280, 720, FlxColor.RED);
+        add(bg);
+
+        var wip = new flixel.text.FlxText(0, 0, 0, "you dead (wip)", 64);
         wip.screenCenter;
         add(wip);
     }
