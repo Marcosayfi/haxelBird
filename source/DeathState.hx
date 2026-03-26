@@ -19,8 +19,7 @@ class DeathState extends FlxState
 
         closeButton = new FlxButton(1160, 0, "", closeDeathScreen);
         closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
-        add(closeButton);
-
+        
         bg = new FlxSprite(0, 0);
         bg.makeGraphic(1280, 720, FlxColor.RED);
         add(bg);
@@ -28,6 +27,7 @@ class DeathState extends FlxState
         var wip = new flixel.text.FlxText(0, 0, 0, "you dead (wip)", 64);
         wip.screenCenter;
         add(wip);
+        add(closeButton);
     }
 
     function closeDeathScreen():Void

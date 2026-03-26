@@ -25,7 +25,7 @@ class Player extends FlxSprite
         velocity.x = SPEED_X;
 
         // flap
-        if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.UP)
+        if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
         {
             velocity.y = FLAP_Y;
         }
@@ -37,14 +37,14 @@ class Player extends FlxSprite
         if (y < 0)
         {
             y = 0;
-            velocity.y = 0;
+            FlxG.switchState(DeathState.new);
         }
 
         // stop at bottom
         if (y + height > FlxG.height)
         {
             y = FlxG.height - height;
-            velocity.y = 0;
+            FlxG.switchState(DeathState.new);
         }
     }
 }
