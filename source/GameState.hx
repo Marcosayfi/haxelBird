@@ -58,7 +58,7 @@ class GameState extends FlxState
 
 		// TOP PIPE
 		var topPipe = new FlxSprite(FlxG.width, gapY - 400);
-		topPipe.loadGraphic("assets/images/gameplay/pipe.png");
+		topPipe.loadGraphic("assets/images/gameplay/pipe but upside down.png");
 		topPipe.velocity.x = -100;
 
 		// BOTTOM PIPE

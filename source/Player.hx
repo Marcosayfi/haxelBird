@@ -8,15 +8,31 @@ class Player extends FlxSprite
     static inline var SPEED_X:Float = 100;
     static inline var FLAP_Y:Float = -200;
     static inline var GRAVITY:Float = 400;
+    public var skin:String;
 
     public function new(x:Float = 50, y:Float = 200)
     {
-        super(x, y);
+      super(x, y);
 
-	    loadGraphic("assets/images/gameplay/duckie.png"); // bird
+      // Load saved skin from FlxSave
+      var save = new flixel.util.FlxSave();
+      if (save.bind("haxelbird") && save.data.playerSkin != null)
+        {
+          skin = save.data.playerSkin;
+          save.flush();
+        } else
+        {
+          skin = "normal"; // default
+          save.flush();
+        }
 
-        acceleration.y = GRAVITY; // gravity
-        maxVelocity.y = 300;
+      if (skin == "normal")
+        loadGraphic("assets/images/gameplay/duckie.png");
+      else if (skin == "other")
+        loadGraphic("assets/images/gameplay/other duck.png");
+
+       acceleration.y = GRAVITY;
+       maxVelocity.y = 300;
     }
 
     override function update(elapsed:Float)
