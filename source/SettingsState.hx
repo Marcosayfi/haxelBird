@@ -13,7 +13,7 @@ class SettingsState extends FlxState
     var normalduckieButton:FlxButton;
     var otherduckieButton:FlxButton;
     var playerSkin:Player;
-    var wip = new flixel.text.FlxText(0, 0, 0, "WIP", 64);
+    var wip = new flixel.text.FlxText(592, 298, 0, "WIP", 64);
 
     override public function create():Void
     {
@@ -24,11 +24,11 @@ class SettingsState extends FlxState
         closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
         add(closeButton);
 
-        normalduckieButton = new FlxButton(50, 100, "", setNormalDuckie);
+        normalduckieButton = new FlxButton(494, 393, "Normal Duckie", setNormalDuckie);
         normalduckieButton.loadGraphic("assets/images/gamemplay/duckie.png");
         add(normalduckieButton);
 
-        otherduckieButton = new FlxButton(50, 200, "", setOtherDuckie);
+        otherduckieButton = new FlxButton(791, 393, "Other Duckie", setOtherDuckie);
         otherduckieButton.loadGraphic("assets/images/gamemplay/otherDuckieButton.png");
         add(otherduckieButton);
 
@@ -51,10 +51,11 @@ class SettingsState extends FlxState
         Settings.playerSkin = "other";
         saveSkin();
     }
+
     function saveSkin():Void
     {
-     var save = new flixel.util.FlxSave();
-     if (save.bind("haxelbird"))
+      var save = new flixel.util.FlxSave();
+      if (save.bind("haxelbird"))
         {
            save.data.playerSkin = Settings.playerSkin;
            save.flush(); // now the folder and file are created
@@ -64,5 +65,9 @@ class SettingsState extends FlxState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+        if (FlxG.mouse.justPressed)
+        {
+           trace("Clicked at: " + FlxG.mouse.x + ", " + FlxG.mouse.y);
+        }
     }
 }

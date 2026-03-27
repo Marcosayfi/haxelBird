@@ -1,5 +1,6 @@
 package;
 
+import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
 import flixel.FlxState;
@@ -12,6 +13,7 @@ class PlayState extends FlxState
     var playButton:FlxButton;
     var closeButton:FlxButton;
     var settingsButton:FlxButton;
+    var html5Notice = new flixel.text.FlxText(900, 387, 0, "notice: you're on html", 20);
 
     override public function create():Void
     {
@@ -45,8 +47,13 @@ class PlayState extends FlxState
 
     function closeGame():Void
     {
+        #if !html5
         trace('bai bai');
         Sys.exit(0); // remove this line when compiling to https or similar
+        #end
+        #if html5
+        add(html5Notice);
+        #end
     }
 
     function openSettings():Void
