@@ -5,6 +5,8 @@ import flixel.FlxG;
 import flixel.ui.FlxButton;
 import flixel.FlxState;
 import flixel.FlxSprite;
+import flixel.system.FlxAssets.FlxSoundAsset;
+import flixel.group.FlxGroup;
 
 class PlayState extends FlxState
 {
@@ -14,6 +16,7 @@ class PlayState extends FlxState
     var closeButton:FlxButton;
     var settingsButton:FlxButton;
     var html5Notice = new flixel.text.FlxText(900, 387, 0, "notice: you're on html", 20);
+    var music:FlxGroup;
 
     override public function create():Void
     {
@@ -38,6 +41,7 @@ class PlayState extends FlxState
         closeButton = new FlxButton(1160, 0, "", closeGame);
         closeButton.loadGraphic("assets/images/menu/closeButton.png");
         add(closeButton);
+        
     }
 
     function clickPlay():Void
@@ -73,6 +77,11 @@ class PlayState extends FlxState
           #if html5
           add(html5Notice);
           #end
+        }
+
+        if (FlxG.sound.music == null) // don't restart the music if it's already playing
+        {
+	       FlxG.sound.playMusic(AssetPaths.mainMenu__ogg, 1, true, music);
         }
     }
 }
