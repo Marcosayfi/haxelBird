@@ -64,5 +64,15 @@ class PlayState extends FlxState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+        if (FlxG.keys.justPressed.ESCAPE)
+        {
+          #if !html5
+          trace('bai bai');
+          Sys.exit(0); // remove this line when compiling to https or similar
+          #end
+          #if html5
+          add(html5Notice);
+          #end
+        }
     }
 }

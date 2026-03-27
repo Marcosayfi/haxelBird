@@ -4,11 +4,11 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 
 class Player extends FlxSprite
-{
-    static inline var SPEED_X:Float = 100;
-    static inline var FLAP_Y:Float = -200;
-    static inline var GRAVITY:Float = 400;
-    public var skin:String;
+ {
+   static inline var SPEED_X:Float = 100;
+   static inline var FLAP_Y:Float = -200;
+   static inline var GRAVITY:Float = 400;
+   public var skin:String;
 
     public function new(x:Float = 50, y:Float = 200)
     {
@@ -36,9 +36,7 @@ class Player extends FlxSprite
     }
 
     override function update(elapsed:Float)
-    {
-        // move to the right
-        velocity.x = SPEED_X;
+    { 
 
         // flap
         if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
@@ -62,5 +60,5 @@ class Player extends FlxSprite
             y = FlxG.height - height;
             FlxG.switchState(DeathState.new);
         }
-    }
+     }
 }

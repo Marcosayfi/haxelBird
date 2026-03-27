@@ -22,7 +22,7 @@ class GameState extends FlxState
 	    bg.loadGraphic("assets/images/gameplay/gameBG.png");
         add(bg);
 
-		player = new Player(20, 200);
+		player = new Player(200, 200);
         add(player);
 
 		pipes = new FlxGroup();
