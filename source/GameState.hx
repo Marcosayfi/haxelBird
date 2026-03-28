@@ -43,10 +43,12 @@ class GameState extends FlxState
 		}
 
 		// ESC to go back
+		#if !android
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
 			FlxG.switchState(PlayState.new);
 		}
+		#end
 
 		super.update(elapsed);
 	}

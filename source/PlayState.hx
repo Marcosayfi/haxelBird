@@ -16,17 +16,16 @@ class PlayState extends FlxState
     var closeButton:FlxButton;
     var settingsButton:FlxButton;
     var html5Notice = new flixel.text.FlxText(900, 387, 0, "notice: you're on html", 20);
-    var music:FlxGroup;
-
+ 
     override public function create():Void
     {
         super.create();
         trace('opened the game'); // traces that you opened the game, OMG who could've thought?!?
 
         bg = new FlxSprite(0, 0);
-        bg.loadGraphic("assets/images/menu/menuBG.png");
+        bg.loadGraphic("assets/images/menu/menuBG.png"); 
         add(bg);
-
+        // adding the sprites is just almost just pure english idk if it's bc i suck at coding
         logo = new FlxSprite(200, 200);
         logo.loadGraphic("assets/images/menu/logo.png");
         add(logo);
@@ -53,7 +52,7 @@ class PlayState extends FlxState
     {
         #if !html5
         trace('bai bai');
-        Sys.exit(0); // remove this line when compiling to https or similar
+        Sys.exit(0); // remove this line when compiling to https or similar so i don't have to remove this line every time i compile to them
         #end
         #if html5
         add(html5Notice);
@@ -72,7 +71,7 @@ class PlayState extends FlxState
         {
           #if !html5
           trace('bai bai');
-          Sys.exit(0); // remove this line when compiling to https or similar
+          Sys.exit(0); // ditto as last comment
           #end
           #if html5
           add(html5Notice);
@@ -81,7 +80,7 @@ class PlayState extends FlxState
 
         if (FlxG.sound.music == null) // don't restart the music if it's already playing
         {
-	       FlxG.sound.playMusic(AssetPaths.mainMenu__ogg, 1, true, music);
+	       FlxG.sound.playMusic(AssetPaths.mainMenu__ogg, 1, true);
         }
     }
 }

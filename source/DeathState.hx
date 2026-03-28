@@ -11,6 +11,7 @@ class DeathState extends FlxState
     // variables
     var closeButton:FlxButton;
     var bg:FlxSprite;
+    var retry:FlxButton;
 
     override public function create():Void
     {
@@ -24,10 +25,14 @@ class DeathState extends FlxState
         bg.makeGraphic(1280, 720, FlxColor.RED);
         add(bg);
 
+        retry = new FlxButton(600, 350, "retry", retryGame);
+        
         var wip = new flixel.text.FlxText(0, 0, 0, "you dead (wip)", 64);
         wip.screenCenter;
         add(wip);
         add(closeButton);
+        retry = new FlxButton(600, 350, "retry", retryGame);
+        add(retry);
     }
 
     function closeDeathScreen():Void
@@ -35,8 +40,16 @@ class DeathState extends FlxState
         FlxG.switchState(PlayState.new);
     }
 
+    function retryGame():Void
+    {
+        FlxG.switchState(GameState.new);
+    }
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+        if (FlxG.mouse.justPressed)
+        {
+           trace("Clicked at: " + FlxG.mouse.x + ", " + FlxG.mouse.y);
+        }
     }
 }
