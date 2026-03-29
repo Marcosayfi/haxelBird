@@ -44,6 +44,7 @@ class DeathState extends FlxState
     {
         FlxG.switchState(GameState.new);
     }
+    
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
@@ -51,5 +52,11 @@ class DeathState extends FlxState
         {
            trace("Clicked at: " + FlxG.mouse.x + ", " + FlxG.mouse.y);
         }
+        #if !android
+		if (FlxG.keys.justPressed.ESCAPE)
+		{
+			FlxG.switchState(PlayState.new);
+		}
+		#end
     }
 }

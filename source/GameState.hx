@@ -12,7 +12,7 @@ class GameState extends FlxState
 
 	var pipes:FlxGroup;
 	var spawnTimer:Float = 0;
-	var spawnRate:Float = 2; // seconds between pipes
+	var spawnRate:Float = 3; // seconds between pipes
 
 	override public function create()
 	{
@@ -59,12 +59,12 @@ class GameState extends FlxState
 		var gapY = FlxG.random.int(100, FlxG.height - 100);
 
 		// TOP PIPE
-		var topPipe = new FlxSprite(FlxG.width, gapY - 400);
+		var topPipe = new FlxSprite(FlxG.width, gapY - 450);
 		topPipe.loadGraphic("assets/images/gameplay/pipe but upside down.png");
 		topPipe.velocity.x = -100;
 
 		// BOTTOM PIPE
-		var bottomPipe = new FlxSprite(FlxG.width, gapY + 100);
+		var bottomPipe = new FlxSprite(FlxG.width, gapY + 150);
 		bottomPipe.loadGraphic("assets/images/gameplay/pipe.png");
 		bottomPipe.velocity.x = -100;
 
