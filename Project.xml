@@ -26,6 +26,7 @@
 
 	<!--Mobile-specific-->
 	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
+	<android package="com.marco.haxelbird" minSdkVersion="21" targetSdkVersion="33"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 

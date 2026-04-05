@@ -6,7 +6,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxSave;
 
-class SettingsState extends FlxState
+class SkinsState extends FlxState
 {
     // variables
     var closeButton:FlxButton;
@@ -25,11 +25,11 @@ class SettingsState extends FlxState
         add(closeButton);
 
         normalduckieButton = new FlxButton(494, 393, "Normal Duckie", setNormalDuckie);
-        normalduckieButton.loadGraphic("assets/images/gamemplay/duckie.png");
+        normalduckieButton.loadGraphic("assets/images/menu/duckieButton.png"); // these are just placeholders for now
         add(normalduckieButton);
 
         otherduckieButton = new FlxButton(791, 393, "Other Duckie", setOtherDuckie);
-        otherduckieButton.loadGraphic("assets/images/gamemplay/otherDuckieButton.png");
+        otherduckieButton.loadGraphic("assets/images/menu/otherDuckieButton.png");
         add(otherduckieButton);
 
         add(wip);
@@ -65,9 +65,11 @@ class SettingsState extends FlxState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+        #if !mobile
         if (FlxG.mouse.justPressed)
         {
            trace("Clicked at: " + FlxG.mouse.x + ", " + FlxG.mouse.y);
         }
+        #end
     }
 }

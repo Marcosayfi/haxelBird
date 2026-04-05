@@ -48,11 +48,12 @@ class DeathState extends FlxState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+        #if !mobile
         if (FlxG.mouse.justPressed)
         {
            trace("Clicked at: " + FlxG.mouse.x + ", " + FlxG.mouse.y);
         }
-        #if !android
+        
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
 			FlxG.switchState(PlayState.new);

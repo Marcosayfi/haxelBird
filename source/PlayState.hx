@@ -5,8 +5,6 @@ import flixel.FlxG;
 import flixel.ui.FlxButton;
 import flixel.FlxState;
 import flixel.FlxSprite;
-import flixel.system.FlxAssets.FlxSoundAsset;
-import flixel.group.FlxGroup;
 
 class PlayState extends FlxState
 {
@@ -14,7 +12,7 @@ class PlayState extends FlxState
     var logo:FlxSprite;
     var playButton:FlxButton;
     var closeButton:FlxButton;
-    var settingsButton:FlxButton;
+    var skinsButton:FlxButton;
     var html5Notice = new flixel.text.FlxText(900, 387, 0, "notice: you're on html", 20);
  
     override public function create():Void
@@ -34,8 +32,9 @@ class PlayState extends FlxState
         playButton.loadGraphic("assets/images/menu/playButton.png"); // add buttons
         add(playButton);
 
-        settingsButton = new FlxButton(500, 500, "Settings", openSettings);
-        add(settingsButton);
+        skinsButton = new FlxButton(100, 400, "", openSkins);
+        skinsButton.loadGraphic("assets/images/menu/skinButton.png"); // add buttons
+        add(skinsButton);
 
         closeButton = new FlxButton(1160, 0, "", closeGame);
         closeButton.loadGraphic("assets/images/menu/closeButton.png");
@@ -59,26 +58,31 @@ class PlayState extends FlxState
         #end
     }
 
-    function openSettings():Void
+    function openSkins():Void
     {
-        FlxG.switchState(SettingsState.new);
+        FlxG.switchState(SkinsState.new);
     }
 
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
+        #if (!mobile && !html5)
         if (FlxG.keys.justPressed.ESCAPE)
         {
-          #if !html5
           trace('bai bai');
           Sys.exit(0); // ditto as last comment
-          #end
-          #if html5
-          add(html5Notice);
-          #end
         }
+        #end
 
-        if (FlxG.sound.music == null) // don't restart the music if it's already playing
+        #if html5
+        if (FlxG.keys.justPressed.ESCAPE)
+        {
+          trace('bai bai');
+          add(html5Notice);
+        }
+        #end
+
+        if (FlxG.sound.music == null) // song
         {
 	       FlxG.sound.playMusic(AssetPaths.mainMenu__ogg, 1, true);
         }

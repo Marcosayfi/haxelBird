@@ -1,5 +1,6 @@
 package;
 
+import flixel.ui.FlxButton;
 import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.FlxG;
@@ -9,10 +10,11 @@ class GameState extends FlxState
 {
 	var player:Player;
     var bg:FlxSprite;
-
 	var pipes:FlxGroup;
 	var spawnTimer:Float = 0;
 	var spawnRate:Float = 3; // seconds between pipes
+	var jumpButton:FlxButton;
+	var closeButton:FlxButton;
 
 	override public function create()
 	{
@@ -27,6 +29,16 @@ class GameState extends FlxState
 
 		pipes = new FlxGroup();
 		add(pipes);
+
+		#if mobile
+		jumpButton = new FlxButton(1000, 475, "", jumpPlayer);
+		jumpButton.loadGraphic("assets/images/gameplay/jump.png");
+		add(jumpButton);
+
+		closeButton = new FlxButton(1160, 0, "", openMainMenu);
+        closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
+        add(closeButton);
+        #end
 
 		trace('pressed play button'); // traces that you pressed play button
 	}
@@ -43,15 +55,26 @@ class GameState extends FlxState
 		}
 
 		// ESC to go back
-		#if !android
+		#if !mobile
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
 			FlxG.switchState(PlayState.new);
 		}
 		#end
 
+
 		super.update(elapsed);
 	}
+
+	public function jumpPlayer()
+	{
+		player.jumpFunction();
+	}
+
+	function openMainMenu():Void
+    {
+        FlxG.switchState(PlayState.new);
+    }
 
 	//  pipe
 	function spawnPipe()

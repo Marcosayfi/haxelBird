@@ -29,8 +29,7 @@ class Player extends FlxSprite
       if (skin == "normal")
         loadGraphic("assets/images/gameplay/duckie.png");
       else if (skin == "other")
-        loadGraphic("assets/images/gameplay/other duck.png");
-
+       loadGraphic("assets/images/gameplay/other duck.png");
        acceleration.y = GRAVITY;
        maxVelocity.y = 300;
     }
@@ -38,11 +37,14 @@ class Player extends FlxSprite
     override function update(elapsed:Float)
     { 
 
+      #if !mobile
         // flap
         if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
         {
-            velocity.y = FLAP_Y;
+          jumpFunction();
         }
+      #end
+
 
 
         super.update(elapsed);
@@ -61,4 +63,10 @@ class Player extends FlxSprite
             FlxG.switchState(DeathState.new);
         }
      }
+
+  public function jumpFunction()
+  {
+    velocity.y = FLAP_Y;
+  }
+
 }
