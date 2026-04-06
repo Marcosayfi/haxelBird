@@ -14,6 +14,7 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+		#if cpp
 		
 		// Initialize Discord RPC in background thread
 		Thread.create(function():Void
@@ -24,7 +25,7 @@ class Main extends Sprite
 			handlers.ready = cpp.Function.fromStaticFunction(onReady);
 			handlers.disconnected = cpp.Function.fromStaticFunction(onDisconnected);
 			handlers.errored = cpp.Function.fromStaticFunction(onError);
-			Discord.Initialize("345229890980937739", cpp.RawPointer.addressOf(handlers), false, null); // TODO: make a custom id
+			Discord.Initialize("1490639802419118232", cpp.RawPointer.addressOf(handlers), false, null);
 
 			while (true)
 			{
@@ -40,7 +41,9 @@ class Main extends Sprite
 
 		if (stage != null) init(null);
 		else addEventListener(Event.ADDED_TO_STAGE, init);
-	}
+		#end
+	} 
+	
 
 	private function init(event:Event):Void
 	{
@@ -53,6 +56,7 @@ class Main extends Sprite
 
 		addChild(new FlxGame(1280, 720, PlayState));
 	}
+	#if cpp
 
 	private static function onReady(request:cpp.RawConstPointer<DiscordUser>):Void
 	{
@@ -66,8 +70,8 @@ class Main extends Sprite
 			Sys.println('Discord: Connected to user @${username} ($globalName)');
 
 		final discordPresence:DiscordRichPresence = new DiscordRichPresence();
-		discordPresence.type = DiscordActivityType_Watching;
-		discordPresence.state = "gaming";
+		discordPresence.type = DiscordActivityType_Playing;
+		discordPresence.state = "gaming at its peak";
 		discordPresence.details = "Haxel Bird";
 		discordPresence.largeImageKey = "assets/images/gameplay/duckie.png"; //not working yet
 		discordPresence.smallImageKey = "ptb-small";
@@ -94,5 +98,7 @@ class Main extends Sprite
 	{
 		Sys.println('Discord: Error ($errorCode:$message)');
 	}
+
+	#end
 }
 

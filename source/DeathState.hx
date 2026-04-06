@@ -26,6 +26,7 @@ class DeathState extends FlxState
         add(bg);
 
         retry = new FlxButton(600, 350, "retry", retryGame);
+        retry.loadGraphic('assets/images/menu/retry.png');
         
         var wip = new flixel.text.FlxText(0, 0, 0, "you dead (wip)", 64);
         wip.screenCenter;

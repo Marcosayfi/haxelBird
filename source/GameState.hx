@@ -12,7 +12,7 @@ class GameState extends FlxState
     var bg:FlxSprite;
 	var pipes:FlxGroup;
 	var spawnTimer:Float = 0;
-	var spawnRate:Float = 3; // seconds between pipes
+	var spawnRate:Float = 3.5; // seconds between pipes
 	var jumpButton:FlxButton;
 	var closeButton:FlxButton;
 
@@ -62,9 +62,20 @@ class GameState extends FlxState
 		}
 		#end
 
+	
+
+		FlxG.overlap(player, pipes, onOverlap, function(obj1, obj2) {
+        // This callback returns true if pixels overlap, preventing 
+        // the callback 'onOverlap' from running if they don't.
+           return FlxG.pixelPerfectOverlap(cast obj1, cast obj2);
+        });
 
 		super.update(elapsed);
 	}
+
+	function onOverlap(obj1:FlxSprite, obj2:FlxSprite):Void {
+       FlxG.switchState(DeathState.new);
+    }
 
 	public function jumpPlayer()
 	{
@@ -79,7 +90,7 @@ class GameState extends FlxState
 	//  pipe
 	function spawnPipe()
 	{
-		var gapY = FlxG.random.int(100, FlxG.height - 100);
+		var gapY = FlxG.random.int(200, FlxG.height - 200);
 
 		// TOP PIPE
 		var topPipe = new FlxSprite(FlxG.width, gapY - 450);

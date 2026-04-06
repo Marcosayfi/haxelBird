@@ -27,11 +27,19 @@ class Player extends FlxSprite
         }
 
       if (skin == "normal")
-        loadGraphic("assets/images/gameplay/duckie.png");
-      else if (skin == "other")
-       loadGraphic("assets/images/gameplay/other duck.png");
-       acceleration.y = GRAVITY;
-       maxVelocity.y = 300;
+        loadGraphic("assets/images/gameplay/skins/duckie.png"); // skins
+      else if (skin == "other") // TODO: fix the amount of if statements
+       loadGraphic("assets/images/gameplay/skins/other duck.png");
+      else if (skin == "extremeQuality")
+       loadGraphic("assets/images/gameplay/skins/HIGH QUALITY.png");
+      else if (skin == "creeper")
+       loadGraphic("assets/images/gameplay/skins/creeper.png");
+      else if (skin == "devilangel")
+       loadGraphic("assets/images/gameplay/skins/devilangel.png");
+      else if (skin == "zombie")
+       loadGraphic("assets/images/gameplay/skins/zombie.png");
+    acceleration.y = GRAVITY;
+    maxVelocity.y = 300;
     }
 
     override function update(elapsed:Float)
@@ -50,9 +58,8 @@ class Player extends FlxSprite
         super.update(elapsed);
 
         // stop at top
-        if (y < 0)
+        if (y < -87)
         {
-            y = 0;
             FlxG.switchState(DeathState.new);
         }
 
@@ -60,7 +67,6 @@ class Player extends FlxSprite
         if (y + height > FlxG.height)
         {
             y = FlxG.height - height;
-            FlxG.switchState(DeathState.new);
         }
      }
 

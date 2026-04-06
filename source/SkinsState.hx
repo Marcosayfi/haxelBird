@@ -12,6 +12,10 @@ class SkinsState extends FlxState
     var closeButton:FlxButton;
     var normalduckieButton:FlxButton;
     var otherduckieButton:FlxButton;
+    var highqualityduckieButton:FlxButton;
+    var creeperduckButton:FlxButton;
+    var devilangelduckButton:FlxButton;
+    var zombieDuckButton:FlxButton;
     var playerSkin:Player;
     var wip = new flixel.text.FlxText(592, 298, 0, "WIP", 64);
 
@@ -28,9 +32,25 @@ class SkinsState extends FlxState
         normalduckieButton.loadGraphic("assets/images/menu/duckieButton.png"); // these are just placeholders for now
         add(normalduckieButton);
 
-        otherduckieButton = new FlxButton(791, 393, "Other Duckie", setOtherDuckie);
+        highqualityduckieButton = new FlxButton(394, 393, "high quality", increaseDuckieQuality);
+        highqualityduckieButton.loadGraphic("assets/images/menu/duckieButton.png"); // these are just placeholders for now
+        add(highqualityduckieButton);
+
+        devilangelduckButton = new FlxButton(791, 393, "DevilAngel", setDevilAngelDuckie);
+        devilangelduckButton.loadGraphic("assets/images/menu/otherDuckieButton.png");
+        add(devilangelduckButton);
+
+        otherduckieButton = new FlxButton(580, 393, "Fancy Duckie", setOtherDuckie);
         otherduckieButton.loadGraphic("assets/images/menu/otherDuckieButton.png");
         add(otherduckieButton);
+
+        zombieDuckButton = new FlxButton(680, 393, "Zombie Duckie", setZombieDuckie);
+        zombieDuckButton.loadGraphic("assets/images/menu/otherDuckieButton.png");
+        add(zombieDuckButton);
+
+        creeperduckButton = new FlxButton(891, 393, "creeper Duckie", setZombieDuckie);
+        creeperduckButton.loadGraphic("assets/images/menu/otherDuckieButton.png");
+        add(creeperduckButton);
 
         add(wip);
     }
@@ -49,6 +69,30 @@ class SkinsState extends FlxState
     function setOtherDuckie():Void
     {
         Settings.playerSkin = "other";
+        saveSkin();
+    }
+
+    function setZombieDuckie():Void
+    {
+        Settings.playerSkin = "zombie";
+        saveSkin();
+    }
+
+    function setDevilAngelDuckie():Void
+    {
+        Settings.playerSkin = "devilangel";
+        saveSkin();
+    }
+
+    function setCreeperDuckie():Void
+    {
+        Settings.playerSkin = "creeper";
+        saveSkin();
+    }
+
+    function increaseDuckieQuality():Void
+    {
+        Settings.playerSkin = "extremeQuality";
         saveSkin();
     }
 
