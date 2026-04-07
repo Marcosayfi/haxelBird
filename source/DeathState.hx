@@ -1,6 +1,5 @@
 package;
 
-import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
 import flixel.FlxState;
@@ -21,18 +20,16 @@ class DeathState extends FlxState
         closeButton = new FlxButton(1160, 0, "", closeDeathScreen);
         closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
         
-        bg = new FlxSprite(0, 0);
-        bg.makeGraphic(1280, 720, FlxColor.RED);
+        bg = new FlxSprite(100, 0);
+        bg.loadGraphic("assets/images/menu/death/backgrond.png");
+        bg.scale.set(1.7, 1.3);
         add(bg);
 
-        retry = new FlxButton(600, 350, "retry", retryGame);
-        retry.loadGraphic('assets/images/menu/retry.png');
+        retry = new FlxButton(600, 350, "", retryGame);
+        retry.loadGraphic("assets/images/menu/death/retry.png");
+        retry.scale.set(0.33, 0.3);
         
-        var wip = new flixel.text.FlxText(0, 0, 0, "you dead (wip)", 64);
-        wip.screenCenter;
-        add(wip);
         add(closeButton);
-        retry = new FlxButton(600, 350, "retry", retryGame);
         add(retry);
     }
 

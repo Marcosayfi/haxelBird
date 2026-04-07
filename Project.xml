@@ -33,6 +33,7 @@
 	<set name="BUILD_DIR" value="export" />
 	<source path="source" />
 	<assets path="assets" />
+	<font path="assets/comic-sans.ttf" id="comic-sans" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
@@ -40,7 +41,7 @@
 	<haxelib name="hxdiscord_rpc" />
 
 	<!--In case you want to use the addons package-->
-	<!--<haxelib name="flixel-addons" />-->
+	<!--<haxelib name="flixel-addons"-->
 
 	<!--In case you want to use the ui package-->
 	<!--<haxelib name="flixel-ui" />-->
@@ -90,6 +91,6 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here-->
-	<icon path="assets/images/gameplay/skins/duckie.png" />
+	<icon path="assets/images/gameplay/skins/normal.png" />
 
 </project>

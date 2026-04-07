@@ -20,11 +20,11 @@ class Main extends Sprite
 		super();
 		
 		// Initialize Discord RPC in background thread
-		#if !html5
-		Thread.create(function():Void
+		#if (!mobile && !html5)
+		Thread.create(function():Void	
 		{
-		#end
-		 #if (!mobile && !html5)
+		
+		 
 			Sys.println('Initializing Discord RPC...');
 
 			final handlers:DiscordEventHandlers = new DiscordEventHandlers();
@@ -44,7 +44,8 @@ class Main extends Sprite
 				Sys.sleep(2);
 			}
 		 
-		}); #end
+		});
+		#end
 
 		if (stage != null) init(null);
 		else addEventListener(Event.ADDED_TO_STAGE, init);

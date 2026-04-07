@@ -27,29 +27,8 @@ class Player extends FlxSprite
       save.flush();
     }
 
-    if (skin == "normal")      
     {
-      loadGraphic("assets/images/gameplay/skins/duckie.png");
-    }
-    else if (skin == "other")
-    {
-      loadGraphic("assets/images/gameplay/skins/other duck.png");
-    }
-    else if (skin == "extremeQuality")
-    {  
-      loadGraphic("assets/images/gameplay/skins/HIGH QUALITY.png");
-    }
-    else if (skin == "creeper")
-    {
-      loadGraphic("assets/images/gameplay/skins/creeper.png");
-    }
-    else if (skin == "devilangel")
-    {
-      loadGraphic("assets/images/gameplay/skins/devilangel.png");
-    }
-    else if (skin == "zombie")
-    {
-      loadGraphic("assets/images/gameplay/skins/zombie.png");
+      loadGraphic("assets/images/gameplay/skins/" + skin + ".png");
     }
 
     acceleration.y = GRAVITY;
