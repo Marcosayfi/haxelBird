@@ -5,20 +5,26 @@ import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
 import openfl.display.StageAlign;
 import openfl.events.Event;
+#if (!mobile && !html5)
 import hxdiscord_rpc.Discord;
 import hxdiscord_rpc.Types;
+#end
+#if !html5
 import sys.thread.Thread;
+#end
 
 class Main extends Sprite
 {
 	public function new()
 	{
 		super();
-		#if cpp
 		
 		// Initialize Discord RPC in background thread
+		#if !html5
 		Thread.create(function():Void
 		{
+		#end
+		 #if (!mobile && !html5)
 			Sys.println('Initializing Discord RPC...');
 
 			final handlers:DiscordEventHandlers = new DiscordEventHandlers();
@@ -37,11 +43,11 @@ class Main extends Sprite
 
 				Sys.sleep(2);
 			}
-		});
+		 
+		}); #end
 
 		if (stage != null) init(null);
 		else addEventListener(Event.ADDED_TO_STAGE, init);
-		#end
 	} 
 	
 
@@ -56,7 +62,7 @@ class Main extends Sprite
 
 		addChild(new FlxGame(1280, 720, PlayState));
 	}
-	#if cpp
+	#if (!mobile && !html5)
 
 	private static function onReady(request:cpp.RawConstPointer<DiscordUser>):Void
 	{
