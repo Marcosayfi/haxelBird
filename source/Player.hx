@@ -14,7 +14,7 @@ class Player extends FlxSprite
   {
     super(x, y);
 
-    // Load saved skin from FlxSave
+    // load saved skin from FlxSave
     var save = new flixel.util.FlxSave();
     if (save.bind("haxelbird") && save.data.playerSkin != null)
     {
@@ -28,7 +28,7 @@ class Player extends FlxSprite
     }
 
     {
-      loadGraphic("assets/images/gameplay/skins/" + skin + ".png");
+      loadGraphic("assets/images/gameplay/skins/" + skin + ".png"); // load the skin depending on what you have selected
     }
 
     acceleration.y = GRAVITY;

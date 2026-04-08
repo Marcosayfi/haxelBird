@@ -4,7 +4,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="haxelbird" file="haxelBird" main="Main" version="0.0.1" company="marco game stuff" />
+	<app title="haxelbird" file="haxelBird" main="Main" version="0.0.1" company="marco game stuff" package="com.marco.haxelbird" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -26,7 +26,6 @@
 
 	<!--Mobile-specific-->
 	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
-	<android package="com.marco.haxelbird" minSdkVersion="21" targetSdkVersion="33"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 

@@ -13,6 +13,7 @@ class PlayState extends FlxState
     var playButton:FlxButton;
     var closeButton:FlxButton;
     var skinsButton:FlxButton;
+    var achievementsMenu:FlxButton;
     var html5Notice = new flixel.text.FlxText(900, 387, 0, "notice: you're on html", 20);
  
     override public function create():Void
@@ -39,7 +40,9 @@ class PlayState extends FlxState
         closeButton = new FlxButton(1160, 0, "", closeGame);
         closeButton.loadGraphic("assets/images/menu/closeButton.png");
         add(closeButton);
-        
+
+        achievementsMenu = new FlxButton(956, 151, "Achievements", openAchievementsMenu);
+        add(achievementsMenu);
     }
 
     function clickPlay():Void
@@ -61,6 +64,11 @@ class PlayState extends FlxState
     function openSkins():Void
     {
         FlxG.switchState(SkinsState.new);
+    }
+
+    function openAchievementsMenu():Void
+    {
+        FlxG.switchState(AchievementsState.new);
     }
 
     override public function update(elapsed:Float):Void
@@ -85,6 +93,11 @@ class PlayState extends FlxState
         if (FlxG.sound.music == null) // song
         {
 	       FlxG.sound.playMusic(AssetPaths.mainMenu__ogg, 1, true);
+        }
+
+        if (FlxG.mouse.justPressed)
+        {
+           trace("Clicked at: " + FlxG.mouse.x + ", " + FlxG.mouse.y);
         }
     }
 }

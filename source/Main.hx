@@ -84,14 +84,9 @@ class Main extends Sprite
 		discordPresence.smallImageKey = "ptb-small";
 
 		final button:DiscordButton = new DiscordButton();
-		button.label = "Test 1";
-		button.url = "https://example.com";
+		button.label = "get the game or die";
+		button.url = "https://github.com/Marcosayfi/haxelBird/releases";
 		discordPresence.buttons[0] = button;
-
-		final button:DiscordButton = new DiscordButton();
-		button.label = "Test 2";
-		button.url = "https://discord.gg/fortnite";
-		discordPresence.buttons[1] = button;
 
 		Discord.UpdatePresence(cpp.RawConstPointer.addressOf(discordPresence));
 	}

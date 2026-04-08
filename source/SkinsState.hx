@@ -18,6 +18,9 @@ class SkinsState extends FlxState
     var creeperduckButton:FlxButton;
     var devilangelduckButton:FlxButton;
     var zombieDuckButton:FlxButton;
+    var moonlightDuckButton:FlxButton;
+    var dumblightDuckButton:FlxButton;
+    var abdallahDuckButton:FlxButton;
     var playerSkin:Player;
     var bg:FlxSprite;
     var skinsText:FlxText;
@@ -40,9 +43,23 @@ class SkinsState extends FlxState
         normalduckieButton.loadGraphic("assets/images/menu/skins/duckieButton.png"); // skin buttons
         add(normalduckieButton);
 
-        highqualityduckieButton = new FlxButton(678, 393, "", increaseDuckieQuality);
+        highqualityduckieButton = new FlxButton(680, 383, "", increaseDuckieQuality);
         highqualityduckieButton.loadGraphic("assets/images/menu/skins/highQualityDuckButton.png");
+        highqualityduckieButton.scale.set(1.05, 1.05);
+        highqualityduckieButton.updateHitbox();
         add(highqualityduckieButton);
+
+        moonlightDuckButton = new FlxButton(678, 193, "", setMoonlightDuck);
+        moonlightDuckButton.loadGraphic("assets/images/menu/skins/moonLightButton.png");
+        add(moonlightDuckButton);
+
+        abdallahDuckButton = new FlxButton(1078, 193, "", setAbdallahDuck);
+        abdallahDuckButton.loadGraphic("assets/images/menu/skins/abdallahDuckButton.png");
+        add(abdallahDuckButton);
+
+        dumblightDuckButton = new FlxButton(878, 193, "", setDumblightDuck);
+        dumblightDuckButton.loadGraphic("assets/images/menu/skins/dumbLightButton.png");
+        add(dumblightDuckButton);
 
         devilangelduckButton = new FlxButton(1078, 393, "", setDevilAngelDuckie);
         devilangelduckButton.loadGraphic("assets/images/menu/skins/devilangelDuckButton.png");
@@ -85,6 +102,24 @@ class SkinsState extends FlxState
     function setZombieDuckie():Void
     {
         Settings.playerSkin = "zombie";
+        saveSkin();
+    }
+
+    function setMoonlightDuck():Void
+    {
+        Settings.playerSkin = "moonlight";
+        saveSkin();
+    }
+
+    function setAbdallahDuck():Void
+    {
+        Settings.playerSkin = "abdallah";
+        saveSkin();
+    }
+
+    function setDumblightDuck():Void
+    {
+        Settings.playerSkin = "dumblight";
         saveSkin();
     }
 
