@@ -21,12 +21,16 @@ class GameState extends FlxState
 	var scored:Array<Bool> = [];
 	var scores:Int = 0;
 	var scoreText:FlxText;
-	var save = new flixel.util.FlxSave();
 	public var highScore:Int = 0;
+	var isDead:Bool = false;
 
 	override public function create()
 	{
 		super.create();
+
+		// high score
+		HighScores.initialize();
+		highScore = HighScores.getHighScore();
 
 	    bg = new FlxSprite(0, 0);
 	    bg.loadGraphic("assets/images/gameplay/gameBG.png");
@@ -42,11 +46,12 @@ class GameState extends FlxState
 		jumpButton = new FlxButton(1000, 475, "", jumpPlayer);
 		jumpButton.loadGraphic("assets/images/gameplay/jump.png");
 		add(jumpButton);
+		#end
 
-		closeButton = new FlxButton(1160, 0, "", openMainMenu);
+		closeButton = new FlxButton(1160, 0, "", pauseGame);
         closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
         add(closeButton);
-        #end
+        
 
 		scoreText = new FlxText(940, 50, 0, "Score:" + scores, 32);
 		scoreText.setFormat("assets/comic-sans.ttf", 32, FlxColor.BLACK);
@@ -70,7 +75,7 @@ class GameState extends FlxState
 		#if !mobile
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
-			FlxG.switchState(PlayState.new);
+		    openSubState(new PauseMenuSubState());
 		}
 		#end
 
@@ -95,11 +100,13 @@ class GameState extends FlxState
 	}
 
 	function onOverlap(obj1:FlxSprite, obj2:FlxSprite):Void {
-	   if (scores > highScore){
-		   highScore = scores;
-		   save.flush();
-	    }
-       FlxG.switchState(DeathState.new);
+	   if (!isDead)
+	    {
+	   	   isDead = true;
+	       var isNewHighScore = HighScores.addScore(scores);
+	       highScore = HighScores.getHighScore();
+           FlxG.switchState(DeathState.new);
+        }
     }
 
 	public function jumpPlayer()
@@ -107,15 +114,15 @@ class GameState extends FlxState
 		player.jumpFunction();
 	}
 
-	function openMainMenu():Void
+	function pauseGame():Void
     {
-        FlxG.switchState(PlayState.new);
+        openSubState(new PauseMenuSubState());
     }
 
 	//  pipe
 	function spawnPipe()
 	{
-		var gapY = 300;
+		var gapY = FlxG.random.int(100, 400);
 		var gapSize = 150;
 
 		// TOP PIPE

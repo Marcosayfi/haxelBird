@@ -42,6 +42,7 @@ class PlayState extends FlxState
         add(closeButton);
 
         achievementsMenu = new FlxButton(956, 151, "Achievements", openAchievementsMenu);
+        achievementsMenu.loadGraphic("assets/images/menu/achievementButton.png");
         add(achievementsMenu);
     }
 
@@ -54,7 +55,7 @@ class PlayState extends FlxState
     {
         #if !html5
         trace('bai bai');
-        Sys.exit(0); // remove this line when compiling to https so i don't have to remove this line every time i compile to them
+        Sys.exit(0); // remove this line when compiling to html5 so i don't have to remove this line every time i compile to them
         #end
         #if html5
         add(html5Notice);

@@ -8,7 +8,8 @@ import flixel.text.FlxText;
 class AchievementsState extends FlxState
 {
     var closeButton:FlxButton;
-    var wipText:FlxText;
+    var highScoresText:FlxText;
+    var titleText:FlxText;
 
     override public function create():Void
     {
@@ -17,9 +18,20 @@ class AchievementsState extends FlxState
         closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
         add(closeButton);
 
-        wipText = new FlxText(0, 0, 0, "WIP", 32);
-        wipText.screenCenter(XY);
-        add(wipText);
+        // high scores system
+        HighScores.initialize();
+
+        titleText = new FlxText(0, 50, 0, "YOUR HIGH SCORE", 48);
+        titleText.screenCenter(X);
+        titleText.setFormat("assets/comic-sans.ttf", 48);
+        add(titleText);
+
+        // actually show the high score
+        var highScore = HighScores.getHighScore();
+        highScoresText = new FlxText(0, 200, 0, Std.string(highScore), 96);
+        highScoresText.screenCenter(X);
+        highScoresText.setFormat("assets/comic-sans.ttf", 96);
+        add(highScoresText);
     }
 
     function closeAchievementsMenu():Void

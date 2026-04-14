@@ -5,7 +5,7 @@ import flixel.FlxG;
 
 class Player extends FlxSprite
 {
-  static inline var SPEED_X:Float = 100;
+  static inline var SPEED_X:Float = -160;
   static inline var FLAP_Y:Float = -200;
   static inline var GRAVITY:Float = 400;
   public var skin:String;
