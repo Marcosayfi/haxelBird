@@ -14,7 +14,8 @@ class PlayState extends FlxState
     var closeButton:FlxButton;
     var skinsButton:FlxButton;
     var achievementsMenu:FlxButton;
-    var html5Notice = new flixel.text.FlxText(900, 387, 0, "notice: you're on html", 20);
+    var html5Notice = new flixel.text.FlxText(900, 387, 0, "notice: you're on html5", 20);
+    var flashNotice = new flixel.text.FlxText(900, 387, 0, "notice: you're on flash", 20);
  
     override public function create():Void
     {
@@ -53,12 +54,15 @@ class PlayState extends FlxState
 
     function closeGame():Void
     {
-        #if !html5
+        #if (!html5 && !flash)
         trace('bai bai');
         Sys.exit(0); // remove this line when compiling to html5 so i don't have to remove this line every time i compile to them
         #end
         #if html5
         add(html5Notice);
+        #end
+        #if flash
+        add(flashNotice);
         #end
     }
 
@@ -75,7 +79,7 @@ class PlayState extends FlxState
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
-        #if (!mobile && !html5)
+        #if (!mobile && !html5 && !flash)
         if (FlxG.keys.justPressed.ESCAPE)
         {
           trace('bai bai');
@@ -83,7 +87,7 @@ class PlayState extends FlxState
         }
         #end
 
-        #if html5
+        #if (html5 || flash)
         if (FlxG.keys.justPressed.ESCAPE)
         {
           trace('bai bai');
