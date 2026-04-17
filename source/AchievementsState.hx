@@ -1,11 +1,13 @@
 package;
 
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
-import flixel.FlxState;
 import flixel.text.FlxText;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.TransitionData;
 
-class AchievementsState extends FlxState
+class AchievementsState extends FlxTransitionableState
 {
     var closeButton:FlxButton;
     var highScoresText:FlxText;
@@ -17,6 +19,9 @@ class AchievementsState extends FlxState
         closeButton = new FlxButton(1160, 0, "", closeAchievementsMenu);
         closeButton.loadGraphic("assets/images/menu/closeButton.png"); // add buttons
         add(closeButton);
+
+        FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.2);
+        FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.2);
 
         // high scores system
         HighScores.initialize();

@@ -42,14 +42,14 @@ class PlayState extends FlxState
         closeButton.loadGraphic("assets/images/menu/closeButton.png");
         add(closeButton);
 
-        achievementsMenu = new FlxButton(956, 151, "Achievements", openAchievementsMenu);
+        achievementsMenu = new FlxButton(956, 151, "", openAchievementsMenu);
         achievementsMenu.loadGraphic("assets/images/menu/achievementButton.png");
         add(achievementsMenu);
     }
 
     function clickPlay():Void
     {
-        FlxG.switchState(GameState.new);
+        FlxG.switchState(() -> new GameState());
     }
 
     function closeGame():Void
@@ -68,12 +68,12 @@ class PlayState extends FlxState
 
     function openSkins():Void
     {
-        FlxG.switchState(SkinsState.new);
+        FlxG.switchState(() -> new SkinsState());
     }
 
     function openAchievementsMenu():Void
     {
-        FlxG.switchState(AchievementsState.new);
+        FlxG.switchState(() -> new AchievementsState());
     }
 
     override public function update(elapsed:Float):Void

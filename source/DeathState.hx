@@ -40,7 +40,7 @@ class DeathState extends FlxState
 
     function retryGame():Void
     {
-        FlxG.switchState(GameState.new);
+        FlxG.switchState(() -> new GameState());
     }
     
     override public function update(elapsed:Float):Void
@@ -54,7 +54,7 @@ class DeathState extends FlxState
         
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
-			FlxG.switchState(PlayState.new);
+			FlxG.switchState(() -> new GameState());
 		}
 		#end
     }

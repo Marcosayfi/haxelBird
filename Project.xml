@@ -4,7 +4,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="haxelbird" file="haxelBird" main="Main" version="0.0.1" company="marco game stuff" package="com.marco.haxelbird" />
+	<app title="haxelbird" file="haxelBird" main="Main" version="0.0.1" company="BMACK Games" package="com.bmack.haxelbird" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -38,9 +38,7 @@
 
 	<haxelib name="flixel" />
 	<haxelib name="hxdiscord_rpc" />
-
-	<!--In case you want to use the addons package-->
-	<!--<haxelib name="flixel-addons"-->
+	<haxelib name="flixel-addons" />
 
 	<!--In case you want to use the ui package-->
 	<!--<haxelib name="flixel-ui" />-->

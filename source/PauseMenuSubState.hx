@@ -12,7 +12,7 @@ class PauseMenuSubState extends FlxSubState {
     override public function create():Void {
         super.create();
         
-        // Add UI elements like text or buttons
+        // ui
         var text = new FlxText(0, 0, 0, "pause menu", 20);
         text.screenCenter();
         add(text);

@@ -2,13 +2,14 @@ package;
 
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
-import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.group.FlxGroup;
 import flixel.util.FlxColor;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.TransitionData;
 
-class GameState extends FlxState
+class GameState extends FlxTransitionableState
 {
 	var player:Player;
     var bg:FlxSprite;
@@ -27,6 +28,9 @@ class GameState extends FlxState
 	override public function create()
 	{
 		super.create();
+
+		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.2);
+        FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.2);
 
 		// high score
 		HighScores.initialize();
@@ -79,7 +83,7 @@ class GameState extends FlxState
 		}
 		#end
 
-	    for (i in 0...Std.int(pipes.members.length / 2)) {
+	    for (i in 0...Std.int(pipes.members.length / 2)) { // thx google for the code
 		var topPipe = cast(pipes.members[i * 2], FlxSprite);
 		var bottomPipe = cast(pipes.members[i * 2 + 1], FlxSprite);
 		if (!scored[i] && player.y > topPipe.y + topPipe.height && player.y < bottomPipe.y) {

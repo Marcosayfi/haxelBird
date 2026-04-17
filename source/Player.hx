@@ -39,7 +39,7 @@ class Player extends FlxSprite
     {
      #if !mobile
      // flap
-     if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+     if (FlxG.keys.justPressed.SPACE || FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W || FlxG.mouse.justPressed)
       {
         jumpFunction();
       }

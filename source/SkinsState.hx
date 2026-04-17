@@ -3,12 +3,13 @@ package;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
-import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxSave;
 import flixel.util.FlxColor;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.TransitionData;
 
-class SkinsState extends FlxState
+class SkinsState extends FlxTransitionableState
 {
     // variables
     var closeButton:FlxButton;
@@ -29,6 +30,9 @@ class SkinsState extends FlxState
     {
         super.create();
         trace('opened settings'); // traces that you opened the settings
+
+        FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.2);
+        FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.2);
 
         bg = new FlxSprite(0, 0);
         bg.loadGraphic("assets/images/menu/skins/background.png");
