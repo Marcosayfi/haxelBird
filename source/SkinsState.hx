@@ -151,7 +151,7 @@ class SkinsState extends FlxTransitionableState
       if (save.bind("haxelbird"))
         {
            save.data.playerSkin = Settings.playerSkin;
-           save.flush(); // now the folder and file are created
+           save.flush(); // skin
         }
     }
 
@@ -162,6 +162,11 @@ class SkinsState extends FlxTransitionableState
         if (FlxG.mouse.justPressed)
         {
            trace("Clicked at: " + FlxG.mouse.x + ", " + FlxG.mouse.y);
+        }
+
+        if (FlxG.keys.justPressed.ESCAPE)
+        {
+            FlxG.switchState(PlayState.new);
         }
         #end
     }

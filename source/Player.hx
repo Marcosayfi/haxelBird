@@ -55,7 +55,7 @@ class Player extends FlxSprite
       // stop at bottom
       if (y + height > FlxG.height)
         {
-            y = FlxG.height - height;
+           y = FlxG.height - height;
         }
     }
 

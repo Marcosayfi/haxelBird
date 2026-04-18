@@ -87,6 +87,7 @@ class PlayState extends FlxState
         }
         #end
 
+
         #if (html5 || flash)
         if (FlxG.keys.justPressed.ESCAPE)
         {
@@ -100,9 +101,12 @@ class PlayState extends FlxState
 	       FlxG.sound.playMusic(AssetPaths.mainMenu__ogg, 1, true);
         }
 
+        #if !android
         if (FlxG.mouse.justPressed)
         {
            trace("Clicked at: " + FlxG.mouse.x + ", " + FlxG.mouse.y);
         }
+
+        #end
     }
 }

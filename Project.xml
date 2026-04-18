@@ -17,6 +17,7 @@
 
 	<!--These window settings apply to all targets-->
 	<window width="1280" height="720" fps="180" background="#000000" hardware="true" vsync="false" />
+	<app preloader="Preloader" />
 
 	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />

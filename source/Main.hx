@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxGame;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
@@ -18,6 +19,7 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+		
 		
 		// Initialize Discord RPC in background thread
 		#if (!mobile && !html5 && !flash)
